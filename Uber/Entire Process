@@ -5,7 +5,7 @@ Chandana first contacted me and took my details. One phone screen and then onsit
 Tip: Thoroughly was tested on Async programming in JavaScript.
 
 Phone Screen:
-Animating Progress Bar: Interviwer broke the question into pieces. 
+Animating Progress Bar: Interviewer broke the question into pieces. 
 1) A simple progress bar which fills some % at regular intervals. 
 2) Progress should start on load
 3) Add new progress bars on button click and should start immediately on load
@@ -13,5 +13,26 @@ Animating Progress Bar: Interviwer broke the question into pieces.
 Was tested on how I will pass messages between async functions (among progress bars).
 
 
+Onsite:
+Round 1: Given a dependancy graph, design a system which controls the flow of async functions.
+A -|
+   |-> C -|
+B -|	  |-> E
+		  |
+D --------|
 
+A, B, C, D, E are all async functions. C should execute after A and B. Similarly E should execute after C and D. Design a system that takes the functions and the dependancy graph and makes sure they exceute in right order.
 
+Round 2: Manager Round - She told me about herself and asked about my projects on my resume. Was asked about a project where I failed and what I could have done better.  Then she asked a question on word suggestions when a few letters of the word are typed. I answered that it can be done using a TRIE. Then she asked which traversal technique I would use to fetch the words from the subtree and why - Pros and cons for each.
+
+Round 3: Design question on how I would create a standalone spreadsheet. Follow up, what considerations to take care if it is collaborative like Google Sheets. He was looking at how I would design my classes and how I would store and retrieve data in RAM and HDD. She was looking at my judegemental skills in code and leadership skills at work.
+
+Round 4: You have a queue of async tasks. We want only 3 to exceute at once. Once the 3rd is completed, the next one in the queue should start. Like that only 3 should run at a time. You have a class called Queue which has two methods, add() and run(). add() adds a new task to the queue, run() starts the queue. For each task you can pass a callback function of your choice, which is called once the task is completed. Again the skill on controlling async functions is tested. Got to learn how to use call() and bind() functions. Check the file Round4.html uder Uber/ folder.
+
+Round 5: Design question on Elevators. Design an elevator system with optimum cost. How would you define cost for the system and assume you have whatever hardware you want. I used ideas from CSE 360's sequence diagram and he was impressed.
+
+Summary
+=======
+They replied in 2 days with the result. Overall it was a great experience and company is huge for a startup. Confortable async programming in JS is expected. 
+
+Mistakes I did: Tried to over engineer things. In round 1, I tried to build Semaphore and Barrier Synchronization which was totall over estimate for 45 minutes. In round 4, I totally lost track as I used ECMA 2015 which I learned over the weekend which was un-necessary.
