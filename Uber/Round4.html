@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ES2015</title>
+
+  </head>
+  <body>
+    <script type="text/javascript">
+    'use strict';
+
+    class Q {
+      constructor(p) {
+        this.lastExecuted = 0;
+        this.q = [];
+        this.p  = p;
+      }
+      run() {
+        for(; this.lastExecuted < this.p && this.lastExecuted < this.q.length; ) {
+          this.lastExecuted++;
+          this.q[this.lastExecuted-1].call(this, this.done.bind(this));
+        }
+      }
+      add(func) {
+        this.q.push(func);
+      }
+      done() {
+        // console.log('done');
+        if(this.lastExecuted < this.q.length) {
+          this.lastExecuted++;
+          this.q[this.lastExecuted-1].call(this, this.done.bind(this));
+
+        }
+      }
+    }
+
+    (function() {
+      var q = new Q(3);
+
+      q.add(task);
+      q.add(task);
+      q.add(task);
+      q.add(task);
+      q.add(task);
+      q.add(task);
+      q.run();
+
+      function task(d) {
+        console.log('started')
+        setTimeout(function() {
+          console.log('finished');
+          d();
+        }, Math.random() * 1000) ;
+      }
+    })();
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+HR Contact: Michelle Chen. She is a sweet lady, newly joined at Uber. Left Google as she couldn't find the freedom to implement her ideas.
+
+Chandana first contacted me and took my details. One phone screen and then onsite. Applied for front end engineer role
+
+Tip: Thoroughly was tested on Async programming in JavaScript.
+
+Phone Screen:
+Animating Progress Bar: Interviwer broke the question into pieces. 
+1) A simple progress bar which fills some % at regular intervals. 
+2) Progress should start on load
+3) Add new progress bars on button click and should start immediately on load
+4) Only 3 should animate at a time. If 5 are added in quick succession, only 3 should animate, once one of them finishes, 4th one starts. Similarly for the 5th.
+Was tested on how I will pass messages between async functions (among progress bars).
+
+
+
+

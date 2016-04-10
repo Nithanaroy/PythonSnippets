@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ES2015</title>
+
+  </head>
+  <body>
+    <script type="text/javascript">
+    'use strict';
+    class Semaphore {
+        constructor(w, j) {
+          this.w = w;
+          this.j = j;
+        }
+        freeme(e) {
+          // pop e from w
+          this.w.splice(find(e), 1);
+          if(this.w.length == 0)
+            this.j();
+        }
+        find(toFind) {
+          let i = 0;
+          for(let f of this.w) {
+            if(f == toFind) {
+              break;
+            }
+            i++;
+          }
+          return i;
+        }
+    }
+
+    class Barrier {
+      constructor(map) {
+        this.map = map;
+        this.sem_map = {}
+        this.init();
+      }
+      wrapper(f, name) {
+        f.call(this, name, function() {
+          this.sem_map[f].freeme(f);
+        });
+      }
+      init() {
+        // for each function that has a dependant set up a Semaphore
+        // others call wrapper
+        for(let f in this.map) {
+          let d = this.map[f];
+          if(d.length > 0) {
+            let s = Semaphore(d, f);
+            this.sem_map[f] = s;
+          }
+          else {
+            this.wrapper(f);
+          }
+        }
+      }
+    }
+
+    function driver(name, c) {
+      setTimeout(function() {
+        console.log(name);
+        c();
+      }, 100)
+    }
+
+    let a = driver;
+    let b = driver;
+    let d = driver;
+    let barrier = new Barrier({a: [], b: [], d: [a, b]});
+
+    </script>
+  </body>
+</html>

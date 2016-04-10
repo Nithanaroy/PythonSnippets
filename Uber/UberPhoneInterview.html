@@ -1,0 +1,87 @@
+<!-- Create a progress bar that is 250px wide and animates from 0 to 100% of its width in 3 seconds -->
+<!-- Create a button that adds progress bars to the DOM on each click -->
+<!-- Update your code so that only 1 progress bar can be animating at a time, but you can still add progress bars to the DOM on each button click -->
+<!-- Update your code so that 3 progress bars can be animating at a time -->
+
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Uber Phone Screen</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+    .progress {
+        width: 250px;
+        padding: 0;
+        height: 20px;
+        background: #CCC;
+        margin-bottom: 10px;
+    }
+    
+    .fill {
+        margin: 0;
+        padding: 0;
+        background: red;
+        width: 0;
+        height: 20px;
+    }
+    </style>
+</head>
+
+<body>
+    <button id='addProgress'>Add Progress Bar</button>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+    (function() {
+        var frequency = 0.1;
+        var change = (250 * frequency * 1000) / 3;
+        var progresses = [];
+        var inProgress = [];
+        var maxConcurrentProgresses = 3;
+
+        function excuteProgress() {
+            if (progresses.length > 0) {
+                var progress = progresses.splice(0, 1)[0];
+                inProgress.push(progress);
+                startTheProgress($(progress).children('.fill'));
+            }
+        }
+
+        function startTheProgress(fillRef) {
+            var t = setInterval(function() {
+                var width = $(fillRef).width();
+                if (width == 250 - change) {
+                    clearInterval(t);
+                    inProgress.splice(0, 1);
+                    var cCurrentlyRunning = inProgress.length;
+                    while (cCurrentlyRunning < maxConcurrentProgresses) {
+                        excuteProgress();
+                        cCurrentlyRunning++;
+                    }
+                }
+                $(fillRef).css({
+                    "width": width + change
+                });
+            }, frequency);
+        }
+
+        function createProgressBarHTML() {
+            return $("<div class=\"progress\"><div class='fill'></div></div>");
+        }
+
+        $("#addProgress").click(function() {
+            var ref = createProgressBarHTML();
+            $("body").append(ref);
+            progresses.push(ref);
+            if (inProgress.length < maxConcurrentProgresses) {
+                excuteProgress();
+            }
+        });
+
+    })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+On Mar 7, 2016
+===============
+HR - Elaine. Initially Hannah contacted but she had to move to a new team so she handed me over to Elaine.
+
+Round 1:
+File duplicates - Given a starting path, find all duplicate files based on content of the file.
+
+Round 2:
+Resume review - Asked many questions related to my ownership, leadership and technical abilities.
+
+Round 3:
+File chunk download - Given a list of file chunks, say if the file has been completely downloaded or not.
+Follow up, return the percent of file downloaded. Remember that some chunks may repeat.
+example: file_downloaded([[0,2], [5,7]], 8) => false. Here file has 8 chunks given by 2nd arg. First argument tells that chunks - 0, 1, 5, 6 are downloaded. Therefore file is totally downloaded
+
+Round 4:
+Lunch with manager - Why dropbox and took around the office.
+
+Demo - Showed some upcoming features in Dropbox
+
+Round 5:
+Web Page Crawler - Given a starting URL, crawl all pages until all pages are exhausted. Given a function called process(page), each page should be passed to this function only once. Use parallel processing (threads and semaphores) to solve this.
+
+
+Result:
+No offer though I solved all problems.
+	Feedback - "Some of things we were looking for include systematically walking through your code and finding your own bugs, uncovering mistakes in code by checking against tests or edge cases and ability to reason through concurrency"
